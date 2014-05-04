@@ -11,19 +11,27 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140503120827) do
+ActiveRecord::Schema.define(version: 20140504111851) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "economic_sectors", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "suspects", force: true do |t|
     t.string   "name"
     t.string   "url"
     t.string   "country"
-    t.string   "economic_sector"
+    t.string   "economic_sector_id"
     t.string   "misc_info"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "suspects", ["economic_sector_id"], name: "index_suspects_on_economic_sector_id", using: :btree
 
 end
