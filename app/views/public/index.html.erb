@@ -1,8 +1,15 @@
 <div class="jumbotron">
   <div class="container">
-    <h1>Hello, world!</h1>
-    <p>This is a template for a simple marketing or informational website. It includes a large callout called a jumbotron and three supporting pieces of content. Use it as a starting point to create something more unique.</p>
-    <p><a class="btn btn-primary btn-lg" role="button">Learn more &raquo;</a></p>
+    <h1>Listing Bad Password Policies</h1>
+    <p>
+    <strong>Password Pillory</strong> is a crowd-sourced list that aims to name and shame websites
+    with bad password policies. It is <em>not</em> about bad passwords in general, but our inability
+    to provide a strong one by external constraints.
+    </p>
+    <p>
+      <a class="btn btn-primary btn-lg" role="button">Learn more &raquo;</a>
+      <%= link_to 'Add a Suspect', new_suspect_path, class: 'btn btn-success btn-lg', role: 'button' %>
+    </p>
   </div>
 </div>
 
