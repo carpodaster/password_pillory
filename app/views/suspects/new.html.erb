@@ -1,0 +1,72 @@
+<div class="jumbotron">
+  <div class="container">
+    <h1>Submit a new Suspect</h1>
+    <p>
+      Improve the list by adding a password crime suspect.
+    </p>
+  </div>
+</div>
+
+<div class="container">
+
+  <%= form_for @suspect, html: { role: 'form', class: 'form-horizontal' } do |f| %>
+
+    <% if @suspect.errors.any? %>
+      <div id='error-explanation'>
+        <h2><%= pluralize(@suspect.errors.count, "error") %> prohibited this user from being saved:</h2>
+        <ul>
+          <% @suspect.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+
+        </ul>
+
+      </div>
+
+    <% end %>
+
+    <div class="form-group">
+      <%= f.label :name, class: 'col-sm-2 control-label' %>
+      <div class="col-sm-6">
+        <%= f.text_field :name, class: 'form-control' %>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :url, Suspect.human_attribute_name(:url), class: 'col-sm-2 control-label' %>
+      <div class="col-sm-6">
+        <%= f.url_field :url, class: 'form-control' %>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :country, class: 'col-sm-2 control-label' %>
+      <div class="col-sm-6">
+        <%= f.country_select :country, {}, class: 'form-control', include_blank: true %>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :economic_sector_id, Suspect.human_attribute_name(:economic_sector), class: 'col-sm-2 control-label' %>
+      <div class="col-sm-6">
+        <%= f.select :economic_sector_id, EconomicSector.order(:name).map {|s| [s.name, s.id]}, class: 'form-control', include_blank: 'Other' %>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :misc_info, Suspect.human_attribute_name(:misc_info), class: 'col-sm-2 control-label' %>
+      <div class="col-sm-6">
+        <%= f.text_area :misc_info, rows: 4, class: 'form-control' %>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="col-sm-offset-2 col-sm-6">
+        <%= f.button 'Send', type: 'submit', class: 'btn btn-primary' %>
+        <%= f.button 'Reset', type: 'reset', class: 'btn' %>
+      </div>
+    </div>
+
+  <% end %>
+
+</div>

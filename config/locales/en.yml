@@ -20,4 +20,9 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  activerecord:
+    attributes:
+      suspect:
+        url: URL
+        economic_sector: Sector
+        misc_info: Additional Info
